@@ -54,6 +54,7 @@ AudioAnalyser = (function() {
 			return _this.jsNode.onaudioprocess = function() {
 				_this.analyser.getByteFrequencyData(_this.bands);
 				if (!_this.audio.paused) {
+					var startpos = $('#linode').position();
 					$('#linode').animate({rotate: '+=10deg'}, 0);
 					return typeof _this.onUpdate === "function" ? _this.onUpdate(_this.bands) : void 0;
 				}
@@ -64,6 +65,7 @@ AudioAnalyser = (function() {
 		return this.audio.play();
 	};
 	AudioAnalyser.prototype.stop = function() {
+		$('#linode').css({ WebkitTransform: 'rotate(0deg)'});
 		return this.audio.pause();
 	};
 	return AudioAnalyser;
