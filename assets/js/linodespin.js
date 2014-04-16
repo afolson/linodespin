@@ -54,6 +54,7 @@ AudioAnalyser = (function() {
 			return _this.jsNode.onaudioprocess = function() {
 				_this.analyser.getByteFrequencyData(_this.bands);
 				if (!_this.audio.paused) {
+					$('#linode').animate({rotate: '+=10deg'}, 0);
 					return typeof _this.onUpdate === "function" ? _this.onUpdate(_this.bands) : void 0;
 				}
 			};
@@ -117,7 +118,7 @@ Particle.prototype = {
 		ctx.moveTo(this.size * 0.5, 0);
 		ctx.lineTo(this.size * -0.5, 0);
 		ctx.lineWidth = 1;
-		ctx.lineCap = 'square';
+		ctx.lineCap = 'round';
 		ctx.globalAlpha = this.smoothedAlpha / this.level;
 		ctx.strokeStyle = this.color;
 		ctx.stroke();
