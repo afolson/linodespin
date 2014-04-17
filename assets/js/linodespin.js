@@ -57,6 +57,9 @@ AudioAnalyser = (function() {
 					$('#linode').animate({rotate: '+=10deg'}, 0);
 					return typeof _this.onUpdate === "function" ? _this.onUpdate(_this.bands) : void 0;
 				}
+				else if (_this.audio.ended) {
+					$('#linode').css({ WebkitTransform: 'rotate(0deg)'});
+				};
 			};
 		});
 	}
@@ -64,7 +67,6 @@ AudioAnalyser = (function() {
 		return this.audio.play();
 	};
 	AudioAnalyser.prototype.stop = function() {
-		$('#linode').css({ WebkitTransform: 'rotate(0deg)'});
 		return this.audio.pause();
 	};
 	return AudioAnalyser;
